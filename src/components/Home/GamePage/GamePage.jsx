@@ -1,4 +1,5 @@
 import React from 'react'
+import Rules from '../../Rules/Rules'
 
 const GamePage = () => {
   return (
@@ -61,7 +62,11 @@ const GamePage = () => {
 
     </div>
 
-   
+   <div className="mx-20 lg:mx-32 my-5">
+<Rules/>
+   </div>
+    
+    
     </div>
   )
 }
