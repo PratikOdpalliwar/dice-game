@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Home = () => {
+
+const Home = ({toggle}) => {
   return (
     <div className="flex flex-col lg:flex-row px-5 py-10 justify-center items-center place-content-center ">
 
@@ -13,9 +14,14 @@ const Home = () => {
                 DICE GAME
             </h1>
             <div className="flex flex-col justify-center items-center w-full">
-            <button className="bg-black w-1/3 text-bold px-1 py-1 flex justify-center items-center text-white">
-                Play Game
+            
+           
+            <button 
+            className="bg-black w-1/3 font-bold px-1 py-1 flex justify-center items-center text-white hover:bg-white hover:text-black hover:border-2 hover:border-black transition-all duration-200 ease-in-out"
+            onClick={toggle}>
+                 Play Game
             </button>
+           
             </div>
            
         </div>
