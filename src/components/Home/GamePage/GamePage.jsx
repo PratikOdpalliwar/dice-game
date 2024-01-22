@@ -8,6 +8,7 @@ const GamePage = () => {
   const [currentDice, setCurrentDice] = useState(1);
   const [score, setScore] = useState(0);
   const [err, setErr] = useState("");
+  const [showRules, setShowRules] = useState(false);
 
   const generateRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min);
@@ -17,8 +18,8 @@ const GamePage = () => {
     if (!selectNumber) {
       setErr("You have not selected any number");
       return;
-    }else{
-        setErr("")
+    } else {
+      setErr("");
     }
 
     const randomNumber = generateRandomNumber(1, 7);
@@ -37,6 +38,10 @@ const GamePage = () => {
     setScore(0);
   };
 
+  const toggleVisibility = () => {
+    setShowRules(!showRules);
+  };
+
   return (
     <div className="px-5 py-5">
       <div className="flex flex-col justify-between sm:flex-row">
@@ -46,9 +51,9 @@ const GamePage = () => {
         </div>
 
         <div className="flex flex-col m-2">
-            <p className="text-red-600 text-2xl font-semibold flex justify-center items-center mt-5 px-5 shadow-xl">
-                {err}
-            </p>
+          <p className="text-red-600 text-2xl font-semibold flex justify-center items-center mt-5 px-5 shadow-xl">
+            {err}
+          </p>
           <div className="px-2 py-2 flex flex-row justify-center items-center">
             {arrNumber.map((value, index) => (
               <div
@@ -89,14 +94,17 @@ const GamePage = () => {
             Reset Score
           </div>
 
-          <div className="w-48 h-8 m-2 bg-black text-white p-2 text-bold flex place-content-center items-center hover:bg-black hover:text-white cursor-pointer">
+          <div
+            onClick={toggleVisibility}
+            className="w-48 h-8 m-2 bg-black text-white p-2 te xt-bold flex place-content-center items-center hover:bg-black hover:text-white cursor-pointer"
+          >
             Show Rules
           </div>
         </div>
       </div>
 
-      <div className="mx-20 lg:mx-32 my-5">
-        <Rules />
+      <div className={`${showRules} mx-20 lg:mx-32 my-5`}>
+        {showRules && <Rules />}
       </div>
     </div>
   );
